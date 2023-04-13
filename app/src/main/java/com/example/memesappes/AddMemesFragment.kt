@@ -19,6 +19,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.drawToBitmap
 import androidx.fragment.app.Fragment
 import com.example.memesappes.models.Meme
@@ -147,6 +148,12 @@ class AddMemesFragment : Fragment() {
                         })
 
                 }else{
+                    AlertDialog.Builder(requireContext())
+                        .setTitle("Failed")
+                        .setMessage("please select image")
+                        .setPositiveButton("Ok"){ dialogInterface, which ->
+                            dialogInterface.dismiss()
+                        }.create().show()
                     println("===>please select image")
                 }
             }
