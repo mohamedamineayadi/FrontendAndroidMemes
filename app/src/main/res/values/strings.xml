@@ -17,4 +17,6 @@
     <string name="signup"><u>SIGN UP</u></string>
     <string name="next">Next</string>
     <string name="server_client_id">374197942719-584ld2i1uoic2hbdsvfcvnhdhr7k9tt9.apps.googleusercontent.com</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
