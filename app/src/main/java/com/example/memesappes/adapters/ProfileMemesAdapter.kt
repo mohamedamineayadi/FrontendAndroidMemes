@@ -20,6 +20,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.memesappes.*
+import com.example.memesappes.models.MemeHome
 import com.example.memesappes.models.User
 import com.example.memesappes.utils.ApiInterface
 import com.example.memesappes.utils.BackendUrl
@@ -27,7 +28,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ProfileMemesAdapter(private val context: Context,var memList: MutableList<Meme>) : RecyclerView.Adapter<ProfileMemesAdapter.MemeViewHolder>() {
+class ProfileMemesAdapter(private val context: Context,var memList: MutableList<MemeHome>) : RecyclerView.Adapter<ProfileMemesAdapter.MemeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemeViewHolder {
         val view = LayoutInflater.from(parent.context)

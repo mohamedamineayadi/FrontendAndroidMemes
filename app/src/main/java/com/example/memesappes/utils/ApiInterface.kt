@@ -1,8 +1,6 @@
 package com.example.memesappes.utils
 
-import com.example.memesappes.models.ForgotUser
-import com.example.memesappes.models.Meme
-import com.example.memesappes.models.User
+import com.example.memesappes.models.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
@@ -37,14 +35,20 @@ interface ApiInterface {
                    @Part ("fullname_creator") fullname_creator:String  ): Call<Meme>
 
     @GET("/memes")
-    fun getAllMemes():Call<MutableList<Meme>>
+    fun getAllMemes():Call<MutableList<MemeHome>>
 
     @GET("/memes/{createdBy}")
-    fun getAllMemesByUser(@Path("createdBy") createdBy: String):Call<MutableList<Meme>>
+    fun getAllMemesByUser(@Path("createdBy") createdBy: String):Call<MutableList<MemeHome>>
 
 
     @DELETE("/memes/delete/{id}")
     fun DeleteMemes(@Path("id") id: String):Call<String>
+
+    @PUT("/memes/like/{id}/{email}/{fullname}/{p}")
+    fun LikeMemes(@Path("id") id: String, @Path("email") email: String
+                  , @Path("fullname") fullname: String
+                  , @Path("p") p: Int
+    ): Call<MemeLikeHome>
 
     companion object {
 

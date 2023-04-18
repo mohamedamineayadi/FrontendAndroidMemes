@@ -126,6 +126,9 @@ class AddMemesFragment : Fragment() {
                     val name = RequestBody.create("text/plain".toMediaType(), "image")
 
 
+                    println("==>"+requireArguments().getString(EMAIL,"NULL")+ " && "
+                    +requireArguments().getString(FULLNAME,"NULL")+ " && "+ name+" && "+body
+                    +" && "+txtMemesDesc?.text.toString())
                     service.createMeme(body,name,txtMemesDesc?.text.toString(),
                         requireArguments().getString(EMAIL,"NULL"),
                         requireArguments().getString(FULLNAME,"NULL")

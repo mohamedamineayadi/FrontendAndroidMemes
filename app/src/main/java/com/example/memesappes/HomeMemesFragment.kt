@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.memesappes.adapters.HomeMemesAdapter
 import com.example.memesappes.models.Meme
+import com.example.memesappes.models.MemeHome
 import com.example.memesappes.models.User
 import com.example.memesappes.utils.ApiInterface
 import retrofit2.Call
@@ -21,7 +22,7 @@ class HomeMemesFragment : Fragment() {
     lateinit var memesRecyclerView: RecyclerView
     lateinit var memeAdapter: HomeMemesAdapter
 
-    lateinit var memeList : MutableList<Meme>
+    lateinit var memeList : MutableList<MemeHome>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,14 +40,14 @@ class HomeMemesFragment : Fragment() {
         memeList = mutableListOf()
 
          ApiInterface.create().getAllMemes()
-            .enqueue(object : Callback<MutableList<Meme>> {
-                override fun onResponse(call: Call<MutableList<Meme>>?, response: Response<MutableList<Meme>>?) {
+            .enqueue(object : Callback<MutableList<MemeHome>> {
+                override fun onResponse(call: Call<MutableList<MemeHome>>?, response: Response<MutableList<MemeHome>>?) {
 
                     val memes = response?.body()
                     println("==>"+memes)
                     if(memes != null){
                         for (m in memes)
-                        memeList.add(Meme(m._id, m.text, m.createdBy, m.fullname_creator, m.image))
+                        memeList.add(MemeHome(m._id, m.text, m.createdBy, m.fullname_creator, m.image, m.nbrLike, m.participants))
                         memeAdapter = HomeMemesAdapter(requireContext(),memeList)
 
                         memesRecyclerView.adapter = memeAdapter
@@ -65,7 +66,7 @@ class HomeMemesFragment : Fragment() {
 
                 }
 
-                override fun onFailure(call: Call<MutableList<Meme>>?, t: Throwable?) {
+                override fun onFailure(call: Call<MutableList<MemeHome>>?, t: Throwable?) {
                     println("erreur get user")
                     memeAdapter = HomeMemesAdapter(requireContext(),memeList)
 

@@ -1,6 +1,8 @@
 package com.example.memesappes.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.net.Uri
 import android.view.LayoutInflater
@@ -17,22 +19,43 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.example.memesappes.EMAIL
+import com.example.memesappes.FULLNAME
+import com.example.memesappes.PREF_NAME
+import com.example.memesappes.models.MemeHome
+import com.example.memesappes.models.MemeLikeHome
+import com.example.memesappes.models.UserHome
+import com.example.memesappes.utils.ApiInterface
 import com.example.memesappes.utils.BackendUrl
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class HomeMemesAdapter(private val context: Context,var memList: MutableList<Meme>) : RecyclerView.Adapter<HomeMemesAdapter.MemeViewHolder>() {
+class HomeMemesAdapter(private val context: Context,var memList: MutableList<MemeHome>) : RecyclerView.Adapter<HomeMemesAdapter.HomeMemesAdapter>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemeViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeMemesAdapter {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.memes_single_row, parent, false)
-        return MemeViewHolder(view)
+        return HomeMemesAdapter(view)
     }
 
-    override fun onBindViewHolder(holder: MemeViewHolder, position: Int) {
+    private var mSharedPref: SharedPreferences =
+        context.getSharedPreferences(PREF_NAME, AppCompatActivity.MODE_PRIVATE)
+
+
+    override fun onBindViewHolder(holder: HomeMemesAdapter, position:Int) {
 
         val desc = memList[position].text
 
+        if(memList[position].participants.any { user -> user.email == mSharedPref.getString(EMAIL, "").toString() }) {
+            holder.btnFavoriser.setColorFilter(Color.RED)
+        } else {
+            holder.btnFavoriser.setColorFilter(Color.WHITE)
+        }
+
         val uri = Uri.parse(BackendUrl+""+memList[position].image)
         holder.memeDesc.text = desc
+        holder.likeTextV.text = memList[position].nbrLike.toString()
         Glide.with(context)
             .load(uri)
             .into(holder.memePic)
@@ -49,21 +72,30 @@ class HomeMemesAdapter(private val context: Context,var memList: MutableList<Mem
         }
 
         holder.btnFavoriser.setOnClickListener {
-            println("favorite pressed")
-            /*val car = Car(
-                name,
-                model,
-                price,
-                carList[position].carLogo
-            )
-            if(AppDataBase.getDatabase(holder.itemView.context).carDao().findCar(car.carName) == null){
-                AppDataBase.getDatabase(holder.itemView.context).carDao().insert(car)
-                println("must save")
-            }else{
-                Snackbar.make(holder.itemView, "car already added in Favorite!",Snackbar.LENGTH_SHORT)
-                    .setBackgroundTint(ContextCompat.getColor(holder.itemView.context ,R.color.colorSecondaryLight))
-                    .show();
-            }*/
+            println("==============================>"+position)
+            println("favorite pressed"+memList[position]._id)
+
+            ApiInterface.create().LikeMemes(memList[position]._id,mSharedPref.getString(EMAIL, "").toString(),
+                mSharedPref.getString(FULLNAME, "").toString(),
+                position)
+                .enqueue(object : Callback<MemeLikeHome> {
+                    override fun onResponse(call: Call<MemeLikeHome>?, response: Response<MemeLikeHome>?) {
+
+                        val msg = response?.body()
+                        if (msg != null) {
+                            memList[msg.p].participants = msg.participants
+                            memList[msg.p].nbrLike = msg.nbrLike
+                            notifyDataSetChanged()
+                            println(msg)
+                        }
+                        println(msg)
+                    }
+
+                    override fun onFailure(call: Call<MemeLikeHome>?, t: Throwable?) {
+                        println("erreur like user")
+                    }
+                })
+            notifyDataSetChanged()
         }
 
     }
@@ -71,10 +103,11 @@ class HomeMemesAdapter(private val context: Context,var memList: MutableList<Mem
     override fun getItemCount() = memList.size
 
 
-    class MemeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class HomeMemesAdapter(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val memePic : ImageView = itemView.findViewById<ImageView>(R.id.memeImageView)
         val memeDesc : TextView = itemView.findViewById<TextView>(R.id.memeTextView)
         val btnFavoriser : ImageView = itemView.findViewById(R.id.likeBtn)
+        val likeTextV : TextView = itemView.findViewById<TextView>(R.id.likeTextView)
     }
 }
