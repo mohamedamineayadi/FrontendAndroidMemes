@@ -6,57 +6,115 @@
     android:layout_height="match_parent"
     tools:context=".AddMemesFragment">
 
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="wrap_content"
-        android:layout_height="300dp"
-        android:layout_marginTop="20dp"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/image" />
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtLayoutMemesDesc"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_margin="20dp"
-        android:textColorHint="#CFB226"
-        app:errorEnabled="true"
-        app:hintTextColor="#CFB226"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        app:layout_constraintBottom_toTopOf="@+id/createMemeButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8"
-        app:startIconTint="#CFB226">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtMemesDesc"
+        <!-- Media -->
+        <ImageView
+            android:id="@+id/imageView8"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:hint="Memes Description"
-            android:inputType="textMultiLine"
-            android:maxLines="5"
-            android:textColor="@color/white" />
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:layout_marginTop="20dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/image" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtLayoutMemesDesc"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:textColorHint="#CFB226"
+            app:errorEnabled="true"
+            app:hintTextColor="#CFB226"
+            app:startIconTint="#CFB226">
 
-    <Button
-        android:id="@+id/createMemeButton"
-        android:layout_width="130dp"
-        android:layout_height="58dp"
-        android:layout_marginBottom="80dp"
-        android:text="Post Meme"
-        android:backgroundTint="@color/yellow"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtMemesDesc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Memes Description"
+                android:inputType="textMultiLine"
+                android:maxLines="5"
+                android:textColor="@color/white" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtLayoutMemesTitle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:textColorHint="#CFB226"
+            app:errorEnabled="true"
+            app:hintTextColor="#CFB226"
+            app:startIconTint="#CFB226">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtMemesTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Memes Title image (Optional)"
+                android:inputType="textMultiLine"
+                android:maxLines="5"
+                android:textColor="@color/white" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtLayoutphone">
+
+            <RadioButton
+                android:id="@+id/themeD"
+                android:checked="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Default theme"
+                android:textColor="#CFB226"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/themeBW"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Black and white theme"
+                android:textColor="#CFB226"
+                android:textSize="18sp" />
+
+
+        </RadioGroup>
+
+
+        <Button
+
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/createMemeButton"
+            android:layout_width="130dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Post Meme"
+            android:backgroundTint="@color/yellow"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

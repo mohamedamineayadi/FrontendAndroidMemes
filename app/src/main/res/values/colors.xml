@@ -12,6 +12,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorPrimaryLight">#C5CAE9</color>
     <color name="yellow">#FFDB58	</color>
+    <color name="zzz">#CFD118	</color>
 
     <color name="colorSecondary">#536DFE</color>
     <color name="colorSecondaryDark">#757575</color>

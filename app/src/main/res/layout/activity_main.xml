@@ -11,14 +11,18 @@
         android:id="@+id/app_barMemesApp"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
+        android:background="#2E2E57"
+        android:foregroundTint="#CFD118"
+        app:subtitleTextColor="#CFD118"
+        android:outlineAmbientShadowColor="#CFD118"
+        android:outlineSpotShadowColor="#CFD118"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/menu"
         app:navigationIcon="@drawable/ic_home"
         app:title="Welcome"
-        app:titleTextColor="@color/white" />
+        app:titleTextColor="#CFD118" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -47,8 +51,10 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/app_barMemesApp" />
+        app:layout_constraintTop_toBottomOf="@+id/app_barMemesApp"
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
@@ -58,10 +64,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu"
-        app:itemTextColor="@color/white"
-        app:itemIconTint="@color/white"
+        app:itemTextColor="#CFD118"
+        app:itemIconTint="#CFD118"
         app:itemTextAppearanceActive="@style/BottomNavigationView.Selected"
-        app:backgroundTint="@color/colorPrimary"
+        app:backgroundTint="#2E2E57"
         />
 
 

@@ -9,6 +9,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.button.MaterialButton
 import androidx.fragment.app.Fragment
@@ -27,6 +28,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val toolbar: Toolbar = findViewById(R.id.app_barMemesApp)
+        val navigationIcon = toolbar.navigationIcon
+        DrawableCompat.setTint(navigationIcon!!, ContextCompat.getColor(this, R.color.zzz))
+        toolbar.navigationIcon = navigationIcon
         setSupportActionBar(toolbar)
 
         mSharedPref = getSharedPreferences(PREF_NAME, AppCompatActivity.MODE_PRIVATE)
