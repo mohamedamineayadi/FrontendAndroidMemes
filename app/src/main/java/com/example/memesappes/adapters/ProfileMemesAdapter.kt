@@ -57,7 +57,7 @@ class ProfileMemesAdapter(private val context: Context,var memList: MutableList<
                holder.itemView.context.startActivity(intent)*/
         }
 
-        holder.btnEdit.setOnClickListener {
+        /*holder.btnEdit.setOnClickListener {
             println("edit pressed")
             /*val car = Car(
                 name,
@@ -73,7 +73,7 @@ class ProfileMemesAdapter(private val context: Context,var memList: MutableList<
                     .setBackgroundTint(ContextCompat.getColor(holder.itemView.context ,R.color.colorSecondaryLight))
                     .show();
             }*/
-        }
+        }*/
         holder.btnDelete.setOnClickListener {
             println("delete pressed")
             AlertDialog.Builder(holder.itemView.context)
@@ -114,7 +114,7 @@ class ProfileMemesAdapter(private val context: Context,var memList: MutableList<
 
         val memePic : ImageView = itemView.findViewById<ImageView>(R.id.memeImageView)
         val memeDesc : TextView = itemView.findViewById<TextView>(R.id.memeTextView)
-        val btnEdit : ImageView = itemView.findViewById(R.id.editBtn)
+       // val btnEdit : ImageView = itemView.findViewById(R.id.editBtn)
         val btnDelete : ImageView = itemView.findViewById(R.id.deleteBtn)
     }
 }

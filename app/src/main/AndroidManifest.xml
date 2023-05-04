@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MemesAppES.NoActionBar">
         <activity
+            android:name=".Profile2Activity"
+            android:exported="true" />
+        <activity
             android:name=".RegisterGmailActivity"
             android:exported="true" />
         <activity

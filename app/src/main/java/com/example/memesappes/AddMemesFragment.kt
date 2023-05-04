@@ -55,6 +55,8 @@ class AddMemesFragment : Fragment() {
     lateinit var image : ImageView
     private var imageUri: Uri ? = null
     lateinit var file: File
+    private var currentBitmap: Bitmap? = null
+    //private var defaultBitmap: Bitmap? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -140,6 +142,8 @@ class AddMemesFragment : Fragment() {
             image?.setImageBitmap(bitmap)
             var src : Uri  = bitmapToFile(bitmap);
             image?.setImageURI(src)
+
+
             /*var b : Bitmap?;
             b = image?.drawToBitmap();
             var src : Uri  = bitmapToFile(b);
@@ -165,8 +169,33 @@ class AddMemesFragment : Fragment() {
             e.printStackTrace()
         }
 
+
+        currentBitmap = (image.drawable as BitmapDrawable).bitmap
         // Return the saved bitmap uri
         return Uri.parse(file?.absolutePath)
+    }
+
+
+    fun applyBlackWhiteFilter(originalBitmap: Bitmap): Bitmap {
+        val width = originalBitmap.width
+        val height = originalBitmap.height
+        val blackWhiteBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+
+        val canvas = Canvas(blackWhiteBitmap)
+        val paint = Paint()
+
+        val matrix = ColorMatrix(floatArrayOf(
+            0.33f, 0.33f, 0.33f, 0f, 0f,
+            0.33f, 0.33f, 0.33f, 0f, 0f,
+            0.33f, 0.33f, 0.33f, 0f, 0f,
+            0f, 0f, 0f, 1f, 0f
+        ))
+        val filter = ColorMatrixColorFilter(matrix)
+        paint.colorFilter = filter
+
+        canvas.drawBitmap(originalBitmap, 0f, 0f, paint)
+
+        return blackWhiteBitmap
     }
 
     override fun onCreateView(
@@ -202,9 +231,26 @@ class AddMemesFragment : Fragment() {
             startActivityForResult(gallery, 100)
         }
 
+        val themeRadioGroup: RadioGroup = view.findViewById(R.id.radioGroup)
 
+        themeRadioGroup.setOnCheckedChangeListener { _, checkedId ->
+            if (checkedId == R.id.themeBW && currentBitmap != null) {
+                val originalBitmap = (image.drawable as BitmapDrawable).bitmap
+                val blackWhiteBitmap = applyBlackWhiteFilter(originalBitmap)
+                var src : Uri  = bitmapToFile(blackWhiteBitmap);
+                image?.setImageURI(src)
+            }
+            if (checkedId == R.id.themeD && currentBitmap != null) {
+                var src : Uri  = bitmapToFile(currentBitmap);
+                image.setImageURI(src)
+            }
+        }
 
         createMemeButton?.setOnClickListener{
+            if(currentBitmap!=null && rbBW!!.isChecked) {
+                println("=================ici")
+            }
+            println("create meme clicked")
             if (validate()){
                 if (imageUri != null) {
                     val reqFile = RequestBody.create("image/*".toMediaType(), this.file)

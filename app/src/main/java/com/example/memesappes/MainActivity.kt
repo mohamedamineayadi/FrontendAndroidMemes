@@ -55,17 +55,14 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.profile -> {
                     println("profile")
-                    val profileMeFragment = ProfileFragment.newInstance(
-                        mSharedPref.getString(EMAIL, "").toString(),
-                        mSharedPref.getString(FULLNAME, "").toString()
-                    )
+                    val profileMeFragment = ProfileFragment()
                     changeFragment(profileMeFragment,"")
                 }
             }
             true // Return true to indicate that the item has been handled
         }
 
-        supportFragmentManager.beginTransaction().add(R.id.fragment_container,HomeMemesFragment()).commit()
+        supportFragmentManager.beginTransaction().add(R.id.fragment_container,ProfileFragment()).commit()
     }
 
 
