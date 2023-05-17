@@ -33,6 +33,13 @@ class MainActivity : AppCompatActivity() {
         toolbar.navigationIcon = navigationIcon
         setSupportActionBar(toolbar)
 
+
+        toolbar.setNavigationOnClickListener {
+            println("leaderboard")
+            val mainIntent = Intent(applicationContext, LeaderboardActivity::class.java)
+            startActivity(mainIntent)
+        }
+
         mSharedPref = getSharedPreferences(PREF_NAME, AppCompatActivity.MODE_PRIVATE)
 
         bottom_nav = findViewById(R.id.bottom_nav);

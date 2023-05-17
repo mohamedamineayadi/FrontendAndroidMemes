@@ -18,6 +18,13 @@ data class MemeHome (
     var participants: MutableList<UserHome>
 )
 
+data class MemeLeaderboard (
+    var _id:String,
+    var createdBy: String,
+    var fullname_creator: String,
+    var points: Int,
+)
+
 data class UserHome (
     var fullname: String,
     var email: String,

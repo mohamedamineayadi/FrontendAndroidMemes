@@ -36,6 +36,8 @@ interface ApiInterface {
 
     @GET("/memes")
     fun getAllMemes():Call<MutableList<MemeHome>>
+    @GET("/memes/points")
+    fun getAllMemesLeaderboard():Call<MutableList<MemeLeaderboard>>
 
     @GET("/memes/{createdBy}")
     fun getAllMemesByUser(@Path("createdBy") createdBy: String):Call<MutableList<MemeHome>>

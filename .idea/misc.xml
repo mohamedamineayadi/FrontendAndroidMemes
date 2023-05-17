@@ -15,24 +15,41 @@
         <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2703125" />
         <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/drawable/ic_add.xml" value="0.2703125" />
         <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/drawable/ic_brush.xml" value="0.2703125" />
         <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/drawable/ic_delete.xml" value="0.2703125" />
         <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/drawable/ic_home.xml" value="0.2703125" />
         <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
         <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/drawable/ic_profil.xml" value="0.2703125" />
+        <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/drawable/ic_text.xml" value="0.2703125" />
+        <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/font/roboto_medium.xml" value="0.284375" />
+        <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/activity_edit_image.xml" value="0.264" />
+        <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/activity_forgot_password.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/activity_leaderboard.xml" value="0.2" />
         <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/activity_login.xml" value="0.25025641025641027" />
         <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/activity_profile2.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/activity_register.xml" value="0.25025641025641027" />
         <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/activity_register_gmail.xml" value="0.25025641025641027" />
         <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/activity_splash_screen.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/activity_welcome.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/add_text_dialog.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/color_picker_item_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/custom_menu_item.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/fragment_add_memes.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/fragment_blank.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/fragment_bottom_custom_effect_dialog.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/fragment_bottom_properties_dialog.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/fragment_bottom_sticker_emoji_dialog.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/fragment_home_memes.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/fragment_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/memes_single_row.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/mems_single_row_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/mems_single_row_profile2.xml" value="0.264" />
+        <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/row_editing_tools.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/row_emoji.xml" value="0.1921875" />
+        <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/row_filter_view.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/row_sticker.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/layout/single_row_leaderboard.xml" value="0.264" />
         <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/menu/bottom_nav_meny.xml" value="0.25025641025641027" />
         <entry key="..\:/Users/walid/Documents/GitHub/FrontendAndroidMemes/app/src/main/res/menu/menu.xml" value="0.25025641025641027" />

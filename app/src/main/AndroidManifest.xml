@@ -15,6 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MemesAppES.NoActionBar">
         <activity
+            android:name=".LeaderboardActivity"
+            android:exported="true" />
+        <activity
+            android:name=".EditImageActivity"
+            android:exported="true" />
+        <activity
             android:name=".Profile2Activity"
             android:exported="true" />
         <activity

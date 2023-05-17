@@ -55,6 +55,7 @@ class HomeMemesAdapter(private val context: Context,var memList: MutableList<Mem
 
         val uri = Uri.parse(BackendUrl+""+memList[position].image)
         holder.memeDesc.text = desc
+        holder.memeCreator.text = "By: "+memList[position].fullname_creator
         holder.likeTextV.text = memList[position].nbrLike.toString()
         Glide.with(context)
             .load(uri)
@@ -107,6 +108,7 @@ class HomeMemesAdapter(private val context: Context,var memList: MutableList<Mem
 
         val memePic : ImageView = itemView.findViewById<ImageView>(R.id.memeImageView)
         val memeDesc : TextView = itemView.findViewById<TextView>(R.id.memeTextView)
+        val memeCreator : TextView = itemView.findViewById<TextView>(R.id.memeCreatorTextView)
         val btnFavoriser : ImageView = itemView.findViewById(R.id.likeBtn)
         val likeTextV : TextView = itemView.findViewById<TextView>(R.id.likeTextView)
     }

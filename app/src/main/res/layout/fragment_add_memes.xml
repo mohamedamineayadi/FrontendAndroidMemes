@@ -16,7 +16,7 @@
             android:id="@+id/imageView8"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3"
+            android:layout_weight="6"
             android:layout_marginTop="20dp"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/image" />
@@ -25,9 +25,11 @@
             android:id="@+id/txtLayoutMemesDesc"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="20dp"
             android:layout_weight="1"
             android:textColorHint="#CFB226"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="80dp"
             app:errorEnabled="true"
             app:hintTextColor="#CFB226"
             app:startIconTint="#CFB226">
@@ -43,74 +45,9 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtLayoutMemesTitle"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="20dp"
-            android:layout_weight="1"
-            android:textColorHint="#CFB226"
-            app:errorEnabled="true"
-            app:hintTextColor="#CFB226"
-            app:startIconTint="#CFB226">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtMemesTitle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Memes Title image (Optional)"
-                android:inputType="textMultiLine"
-                android:maxLines="5"
-                android:textColor="@color/white" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-        <RadioGroup
-            android:id="@+id/radioGroup"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtLayoutphone">
-
-            <RadioButton
-                android:id="@+id/themeD"
-                android:checked="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Default theme"
-                android:textColor="#CFB226"
-                android:textSize="18sp" />
-
-            <RadioButton
-                android:id="@+id/themeBW"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Black and white theme"
-                android:textColor="#CFB226"
-                android:textSize="18sp" />
 
 
-        </RadioGroup>
 
-
-        <Button
-
-            android:layout_gravity="center_horizontal"
-            android:id="@+id/createMemeButton"
-            android:layout_width="130dp"
-            android:layout_marginBottom="80dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="Post"
-            android:backgroundTint="@color/yellow"
-            android:textColor="@color/black" />
 
     </LinearLayout>
 

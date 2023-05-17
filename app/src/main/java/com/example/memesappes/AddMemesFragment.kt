@@ -1,5 +1,6 @@
 package com.example.memesappes
 
+import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
 import android.content.Intent
@@ -43,14 +44,8 @@ import okhttp3.MediaType.Companion.toMediaType
 
 
 class AddMemesFragment : Fragment() {
-    lateinit var back2btn: Button
-    lateinit var createMemeButton: Button
     lateinit var txtMemesDesc: TextInputEditText
     lateinit var txtLayoutMemesDesc: TextInputLayout
-    lateinit var txtMemesTitle: TextInputEditText
-    lateinit var txtLayoutMemesTitle: TextInputLayout
-    private var rbD: RadioButton? = null
-    private var rbBW: RadioButton? = null
 
     lateinit var image : ImageView
     private var imageUri: Uri ? = null
@@ -63,7 +58,7 @@ class AddMemesFragment : Fragment() {
 
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    /*override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == AppCompatActivity.RESULT_OK && requestCode == 100) {
             imageUri = data?.data!!
@@ -196,7 +191,7 @@ class AddMemesFragment : Fragment() {
         canvas.drawBitmap(originalBitmap, 0f, 0f, paint)
 
         return blackWhiteBitmap
-    }
+    }*/
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -210,16 +205,6 @@ class AddMemesFragment : Fragment() {
         txtMemesDesc = view.findViewById(R.id.txtMemesDesc)
         txtLayoutMemesDesc = view.findViewById(R.id.txtLayoutMemesDesc)
 
-        txtMemesTitle = view.findViewById(R.id.txtMemesTitle)
-        txtLayoutMemesTitle = view.findViewById(R.id.txtLayoutMemesTitle)
-
-        rbD = view.findViewById(R.id.themeD)
-        rbBW = view.findViewById(R.id.themeBW)
-
-
-
-        createMemeButton = view.findViewById(R.id.createMemeButton)
-
         val service = Retrofit.Builder()
             .baseUrl(BackendUrl)
             .addConverterFactory(MoshiConverterFactory.create())
@@ -227,74 +212,24 @@ class AddMemesFragment : Fragment() {
             .create(ApiInterface::class.java)
 
         image?.setOnClickListener {
-            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-            startActivityForResult(gallery, 100)
-        }
-
-        val themeRadioGroup: RadioGroup = view.findViewById(R.id.radioGroup)
-
-        themeRadioGroup.setOnCheckedChangeListener { _, checkedId ->
-            if (checkedId == R.id.themeBW && currentBitmap != null) {
-                val originalBitmap = (image.drawable as BitmapDrawable).bitmap
-                val blackWhiteBitmap = applyBlackWhiteFilter(originalBitmap)
-                var src : Uri  = bitmapToFile(blackWhiteBitmap);
-                image?.setImageURI(src)
-            }
-            if (checkedId == R.id.themeD && currentBitmap != null) {
-                var src : Uri  = bitmapToFile(currentBitmap);
-                image.setImageURI(src)
-            }
-        }
-
-        createMemeButton?.setOnClickListener{
-            if(currentBitmap!=null && rbBW!!.isChecked) {
-                println("=================ici")
-            }
-            println("create meme clicked")
-            if (validate()){
-                if (imageUri != null) {
-                    val reqFile = RequestBody.create("image/*".toMediaType(), this.file)
-                    val body = MultipartBody.Part.createFormData("image", this.file!!.name, reqFile)
-                    val name = RequestBody.create("text/plain".toMediaType(), "image")
-
-
-                    println("==>"+requireArguments().getString(EMAIL,"NULL")+ " && "
-                    +requireArguments().getString(FULLNAME,"NULL")+ " && "+ name+" && "+body
-                    +" && "+txtMemesDesc?.text.toString())
-                    service.createMeme(body,name,txtMemesDesc?.text.toString(),
-                        requireArguments().getString(EMAIL,"NULL"),
-                        requireArguments().getString(FULLNAME,"NULL")
-                    )
-                        .enqueue(object:
-                            Callback<Meme> {
-
-                            override fun onResponse(call: Call<Meme>, response: Response<Meme>) {
-                                if (response.code()==200){
-                                    txtMemesDesc.setText("");
-                                    txtMemesTitle.setText("");
-                                    Toast.makeText(context, "Meme create", Toast.LENGTH_LONG).show()
-                                }else
-                                    Toast.makeText(context, "Cannot create error", Toast.LENGTH_LONG).show()
-                            }
-
-                            override fun onFailure(call: Call<Meme>, t: Throwable) {
-                                Toast.makeText(context, "Error: "+t.toString(), Toast.LENGTH_LONG).show()
-                            }
-
-                        })
-
-                }else{
-                    AlertDialog.Builder(requireContext())
-                        .setTitle("Failed")
-                        .setMessage("please select image")
-                        .setPositiveButton("Ok"){ dialogInterface, which ->
-                            dialogInterface.dismiss()
-                        }.create().show()
-                    println("===>please select image")
+            /*val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+            startActivityForResult(gallery, 100)*/
+            if(validate()){
+                val mainIntent = Intent(requireActivity().applicationContext, EditImageActivity::class.java).apply {
+                    putExtra("desc", txtMemesDesc.text.toString())
                 }
+                startActivity(mainIntent)
+                //requireActivity().finish()
+            }else{
+                AlertDialog.Builder(requireContext())
+                    .setTitle("Failed")
+                    .setMessage("please write description for this meme before select image !")
+                    .setPositiveButton("Ok"){ dialogInterface, which ->
+                        dialogInterface.dismiss()
+                    }.create().show()
             }
-
         }
+
 
         return view
     }
